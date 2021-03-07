@@ -14,28 +14,28 @@ import static org.junit.Assert.assertEquals;
 public class SimpleMatchingEngineTest {
 
     private final Set<String> supportedPairs = new HashSet<>();
-    private SimpleMatchingEngine simpleDigiMatchingEngine;
+    private SimpleMatchingEngine simpleMatchingEngine;
 
     @Before
     public void setUp() {
         supportedPairs.add("BTCUSD");
-        simpleDigiMatchingEngine = new SimpleMatchingEngine(supportedPairs);
-        simpleDigiMatchingEngine.init();
+        simpleMatchingEngine = new SimpleMatchingEngine(supportedPairs);
+        simpleMatchingEngine.init();
     }
 
     @Test
     public void testLimitOrderMatching() throws InterruptedException {
-        simpleDigiMatchingEngine.sendOrder(new Order(10000, "BTCUSD", OrderType.LIMIT, 'B', 49000, 25500));
-        simpleDigiMatchingEngine.sendOrder(new Order(10001, "BTCUSD", OrderType.LIMIT, 'S', 53000, 20000));
-        simpleDigiMatchingEngine.sendOrder(new Order(10002, "BTCUSD", OrderType.LIMIT, 'S', 50000, 500));
-        simpleDigiMatchingEngine.sendOrder(new Order(10003, "BTCUSD", OrderType.LIMIT, 'S', 51000, 10000));
-        simpleDigiMatchingEngine.sendOrder(new Order(10004, "BTCUSD", OrderType.LIMIT, 'B', 49500, 50000));
-        simpleDigiMatchingEngine.sendOrder(new Order(10005, "BTCUSD", OrderType.LIMIT, 'S', 51500, 100));
-        simpleDigiMatchingEngine.sendOrder(new Order(10006, "BTCUSD", OrderType.LIMIT, 'B', 53000, 16000));
+        simpleMatchingEngine.sendOrder(new Order(10000, "BTCUSD", OrderType.LIMIT, 'B', 49000, 25500));
+        simpleMatchingEngine.sendOrder(new Order(10001, "BTCUSD", OrderType.LIMIT, 'S', 53000, 20000));
+        simpleMatchingEngine.sendOrder(new Order(10002, "BTCUSD", OrderType.LIMIT, 'S', 50000, 500));
+        simpleMatchingEngine.sendOrder(new Order(10003, "BTCUSD", OrderType.LIMIT, 'S', 51000, 10000));
+        simpleMatchingEngine.sendOrder(new Order(10004, "BTCUSD", OrderType.LIMIT, 'B', 49500, 50000));
+        simpleMatchingEngine.sendOrder(new Order(10005, "BTCUSD", OrderType.LIMIT, 'S', 51500, 100));
+        simpleMatchingEngine.sendOrder(new Order(10006, "BTCUSD", OrderType.LIMIT, 'B', 53000, 16000));
 
         Thread.sleep(50);
-        simpleDigiMatchingEngine.printOrderBook("BTCUSD");
-        OrderBookSnapshot orderBookSnapshot = simpleDigiMatchingEngine.getOrderBook("BTCUSD");
+        simpleMatchingEngine.printOrderBook("BTCUSD");
+        OrderBookSnapshot orderBookSnapshot = simpleMatchingEngine.getOrderBook("BTCUSD");
 
         assertEquals(2, orderBookSnapshot.getOrderBooks().size());
 
@@ -55,7 +55,7 @@ public class SimpleMatchingEngineTest {
         assertEquals(-1, level.ask);
         assertEquals(-1, level.askVolume);
 
-        List<Trade> tradeList = simpleDigiMatchingEngine.getTradeHistory();
+        List<Trade> tradeList = simpleMatchingEngine.getTradeHistory();
         tradeList.forEach(System.out::println);
 
         assertEquals(4, tradeList.size());
@@ -91,12 +91,12 @@ public class SimpleMatchingEngineTest {
 
     @Test
     public void testMarketOrderMatching() throws InterruptedException {
-        simpleDigiMatchingEngine.sendOrder(new Order(10000, "BTCUSD", OrderType.LIMIT, 'B', 49000, 25500));
-        simpleDigiMatchingEngine.sendOrder(new Order(10001, "BTCUSD", OrderType.MARKET, 'S', 53000, 20000));
+        simpleMatchingEngine.sendOrder(new Order(10000, "BTCUSD", OrderType.LIMIT, 'B', 49000, 25500));
+        simpleMatchingEngine.sendOrder(new Order(10001, "BTCUSD", OrderType.MARKET, 'S', 53000, 20000));
 
         Thread.sleep(100);
-        simpleDigiMatchingEngine.printOrderBook("BTCUSD");
-        OrderBookSnapshot orderBookSnapshot = simpleDigiMatchingEngine.getOrderBook("BTCUSD");
+        simpleMatchingEngine.printOrderBook("BTCUSD");
+        OrderBookSnapshot orderBookSnapshot = simpleMatchingEngine.getOrderBook("BTCUSD");
         assertEquals(1, orderBookSnapshot.getOrderBooks().size());
 
         OrderBookSnapshot.DepthLevel level = orderBookSnapshot.getOrderBooks().get(0);
@@ -107,7 +107,7 @@ public class SimpleMatchingEngineTest {
         assertEquals(-1, level.ask);
         assertEquals(-1, level.askVolume);
 
-        List<Trade> tradeList = simpleDigiMatchingEngine.getTradeHistory();
+        List<Trade> tradeList = simpleMatchingEngine.getTradeHistory();
         tradeList.forEach(System.out::println);
 
         assertEquals(1, tradeList.size());
@@ -122,13 +122,13 @@ public class SimpleMatchingEngineTest {
 
     @Test
     public void testMarketOrderReject() throws InterruptedException {
-        simpleDigiMatchingEngine.sendOrder(new Order(10001, "BTCUSD", OrderType.MARKET, 'S', 53000, 20000));
+        simpleMatchingEngine.sendOrder(new Order(10001, "BTCUSD", OrderType.MARKET, 'S', 53000, 20000));
         Thread.sleep(100);
-        simpleDigiMatchingEngine.printOrderBook("BTCUSD");
-        OrderBookSnapshot orderBookSnapshot = simpleDigiMatchingEngine.getOrderBook("BTCUSD");
+        simpleMatchingEngine.printOrderBook("BTCUSD");
+        OrderBookSnapshot orderBookSnapshot = simpleMatchingEngine.getOrderBook("BTCUSD");
         assertEquals(0, orderBookSnapshot.getOrderBooks().size());
 
-        List<Trade> tradeList = simpleDigiMatchingEngine.getTradeHistory();
+        List<Trade> tradeList = simpleMatchingEngine.getTradeHistory();
         tradeList.forEach(System.out::println);
         assertEquals(1, tradeList.size());
 
@@ -142,6 +142,6 @@ public class SimpleMatchingEngineTest {
 
     @After
     public void destroy() {
-        simpleDigiMatchingEngine.dispose();
+        simpleMatchingEngine.dispose();
     }
 }
