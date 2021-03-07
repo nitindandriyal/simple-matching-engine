@@ -1,9 +1,9 @@
-package simple.mtaching.engine;
+package simple.matching.engine;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import simple.mtaching.engine.model.*;
+import simple.matching.engine.model.*;
 
 import java.util.HashSet;
 import java.util.List;

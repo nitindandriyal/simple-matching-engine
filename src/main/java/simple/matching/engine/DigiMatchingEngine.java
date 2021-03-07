@@ -1,8 +1,8 @@
-package simple.mtaching.engine;
+package simple.matching.engine;
 
-import simple.mtaching.engine.model.Order;
-import simple.mtaching.engine.model.OrderBookSnapshot;
-import simple.mtaching.engine.model.Trade;
+import simple.matching.engine.model.Order;
+import simple.matching.engine.model.OrderBookSnapshot;
+import simple.matching.engine.model.Trade;
 
 import java.util.List;
 

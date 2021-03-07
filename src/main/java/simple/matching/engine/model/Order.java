@@ -1,4 +1,4 @@
-package simple.mtaching.engine.model;
+package simple.matching.engine.model;
 
 import java.util.Objects;
 
