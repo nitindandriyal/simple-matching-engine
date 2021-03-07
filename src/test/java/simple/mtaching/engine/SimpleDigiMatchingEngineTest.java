@@ -1,9 +1,9 @@
-package diginex.me;
+package simple.mtaching.engine;
 
-import diginex.me.model.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import simple.mtaching.engine.model.*;
 
 import java.util.HashSet;
 import java.util.List;

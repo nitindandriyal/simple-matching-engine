@@ -1,9 +1,9 @@
-package diginex.me.trade;
+package simple.mtaching.engine.trade;
 
 
-import diginex.me.model.Order;
-import diginex.me.model.Trade;
-import diginex.me.model.TradeStatus;
+import simple.mtaching.engine.model.Order;
+import simple.mtaching.engine.model.Trade;
+import simple.mtaching.engine.model.TradeStatus;
 
 import java.util.ArrayList;
 import java.util.Collections;

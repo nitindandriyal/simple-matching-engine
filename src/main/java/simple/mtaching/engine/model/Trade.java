@@ -1,4 +1,4 @@
-package diginex.me.model;
+package simple.mtaching.engine.model;
 
 public class Trade {
     private final int buyer;
