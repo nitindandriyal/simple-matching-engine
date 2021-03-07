@@ -11,15 +11,15 @@ import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 
-public class SimpleDigiMatchingEngineTest {
+public class SimpleMatchingEngineTest {
 
     private final Set<String> supportedPairs = new HashSet<>();
-    private SimpleDigiMatchingEngine simpleDigiMatchingEngine;
+    private SimpleMatchingEngine simpleDigiMatchingEngine;
 
     @Before
     public void setUp() {
         supportedPairs.add("BTCUSD");
-        simpleDigiMatchingEngine = new SimpleDigiMatchingEngine(supportedPairs);
+        simpleDigiMatchingEngine = new SimpleMatchingEngine(supportedPairs);
         simpleDigiMatchingEngine.init();
     }
 

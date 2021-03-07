@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class SimpleDigiMatchingEngine implements DigiMatchingEngine {
+public class SimpleMatchingEngine implements MatchingEngine {
 
     private final Set<String> supportedPairs;
     private final TradeBook tradeBook = new TradeBook();
@@ -21,7 +21,7 @@ public class SimpleDigiMatchingEngine implements DigiMatchingEngine {
     private final Map<String, LimitOrderBook> limitOrderBookMap = new HashMap<>();
     private final OrderHistory orderHistory = new OrderHistory();
 
-    public SimpleDigiMatchingEngine(Set<String> supportedPairs) {
+    public SimpleMatchingEngine(Set<String> supportedPairs) {
         this.supportedPairs = supportedPairs;
     }
 

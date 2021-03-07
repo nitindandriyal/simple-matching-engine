@@ -6,7 +6,7 @@ import simple.matching.engine.model.Trade;
 
 import java.util.List;
 
-public interface DigiMatchingEngine {
+public interface MatchingEngine {
     void sendOrder(Order order);
 
     OrderBookSnapshot getOrderBook(String pair);
