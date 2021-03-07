@@ -1,5 +1,5 @@
 ### Assumptions
-Probably, I should have got requirements better clarified, but instead made some assumptions as below, based on common knowledge and ease of understanding
+Some assumptions as below, based on common knowledge and ease of understanding
 - Order ID, Prices, Volume are integer values
 - Order can be Partially filled, with remaining amount reflected in the order book 
 - Market order is IOC, will be rejected if no match found
